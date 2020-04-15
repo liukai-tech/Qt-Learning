@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>494</width>
+    <height>359</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>文本文件读写</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0" colspan="2">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>QFile</string>
+       </attribute>
+       <layout class="QFormLayout" name="formLayout_2">
+        <item row="0" column="0" colspan="2">
+         <widget class="QTextEdit" name="textEditDevice"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>QTextStream</string>
+       </attribute>
+       <layout class="QFormLayout" name="formLayout_3">
+        <item row="0" column="0" colspan="2">
+         <widget class="QTextEdit" name="textEditStream"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>494</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuQFile">
+    <property name="title">
+     <string>QFile</string>
+    </property>
+    <addaction name="actionOpenFile"/>
+    <addaction name="actionSaveFile"/>
+   </widget>
+   <widget class="QMenu" name="menuQTextStream">
+    <property name="title">
+     <string>QTextStream</string>
+    </property>
+    <addaction name="actionOpenTextFile"/>
+    <addaction name="actionSaveTextFile"/>
+   </widget>
+   <addaction name="menuQFile"/>
+   <addaction name="menuQTextStream"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpenFile">
+   <property name="text">
+    <string>OpenFile</string>
+   </property>
+  </action>
+  <action name="actionSaveFile">
+   <property name="text">
+    <string>SaveFile</string>
+   </property>
+  </action>
+  <action name="actionOpenTextFile">
+   <property name="text">
+    <string>OpenTextFile</string>
+   </property>
+  </action>
+  <action name="actionSaveTextFile">
+   <property name="text">
+    <string>SaveTextFile</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
