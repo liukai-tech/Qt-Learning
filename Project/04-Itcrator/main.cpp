@@ -1,5 +1,6 @@
 ﻿#include <QCoreApplication>
 #include <QDebug>
+#include <QLinkedList>
 
 int main(int argc, char *argv[])
 {
@@ -97,6 +98,41 @@ int main(int argc, char *argv[])
     QMap<int, int>::const_iterator i12;
     for (i12 = map2.constBegin(); i12 != map2.constEnd(); ++i12)
         qDebug () << i12.key () << ':' << i12.value ();
+
+/*
+ * foreach遍历容器
+ */
+    QLinkedList<QString> Linkedlist;
+    Linkedlist << "Apple" << "Banana" << "Carrot" << "Disk";
+    QString str;
+    foreach (str, Linkedlist)
+        qDebug() << str;
+
+    foreach (const QString &str, Linkedlist) {
+        if (str.isEmpty())
+            break;
+        qDebug() << str;
+    }
+
+    /* 对于 QMap 和 QHash，foreach 会自动访问“键-值”对里的值，所以无需调用 values()。 */
+    QMap<QString, int> map3;
+    map3.insert("Apple", 9999);
+    map3.insert("Mac", 19999);
+    map3.insert("Huawei", 6999);
+    map3.insert("Mi10", 5999);
+    foreach (const QString &str, map3.keys())
+        qDebug() << str << ':' << map3.value(str);
+
+    /* 对于多值映射，可以使用两重 foreach 语句 */
+    QMultiMap<QString, int> map4;
+    map4.insert("Apple book", 19999);
+    map4.insert("Mac book", 29999);
+    map4.insert("Huawei pro", 7999);
+    map4.insert("Mi book", 8999);
+    foreach (const QString &str, map4.uniqueKeys()) {
+        foreach (int i, map4.values(str))
+            qDebug() << str << ':' << i;
+    }
 
     return a.exec();
 }
