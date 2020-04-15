@@ -33,7 +33,7 @@ void MainWindow::on_actionOpenFile_triggered()
 
 bool MainWindow::openTextByIODevice(const QString &aFileName)
 {//用IODevice方式打开文本文件
-    QFile   aFile(aFileName);
+    QFile aFile(aFileName);
     if (!aFile.exists()) //文件不存在
         return false;
     if (!aFile.open(QIODevice::ReadOnly | QIODevice::Text))
