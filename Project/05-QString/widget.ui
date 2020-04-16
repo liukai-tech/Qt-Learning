@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>442</width>
-    <height>314</height>
+    <width>363</width>
+    <height>270</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>字符串与输入输出</string>
   </property>
-  <layout class="QFormLayout" name="formLayout">
+  <layout class="QGridLayout" name="gridLayout_4">
    <item row="0" column="0">
     <layout class="QGridLayout" name="gridLayout_3" rowstretch="4,3,4">
      <item row="0" column="0">
