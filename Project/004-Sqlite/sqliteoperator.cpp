@@ -97,7 +97,7 @@ void SqliteOperator::queryTable()
 }
 
 // 插入单条数据
-void SqliteOperator::singleInsertData(gpslanddb_t &singledb)
+bool SqliteOperator::singleInsertData(gpslanddb_t &singledb)
 {
     QSqlQuery sqlQuery;
     sqlQuery.prepare("INSERT INTO gpsland VALUES(:id,:posx,:posy,:height,:basehgt)");
@@ -109,15 +109,17 @@ void SqliteOperator::singleInsertData(gpslanddb_t &singledb)
     if(!sqlQuery.exec())
     {
         qDebug() << "Error: Fail to insert data. " << sqlQuery.lastError();
+        return false;
     }
     else
     {
         // do something
+        return true;
     }
 }
 
 // 插入多条数据
-void SqliteOperator::moreInsertData(QList<gpslanddb_t>& moredb)
+bool SqliteOperator::moreInsertData(QList<gpslanddb_t>& moredb)
 {
     // 进行多个数据的插入时，可以利用绑定进行批处理
     QSqlQuery sqlQuery;
@@ -140,11 +142,14 @@ void SqliteOperator::moreInsertData(QList<gpslanddb_t>& moredb)
     if (!sqlQuery.execBatch()) // 进行批处理，如果出错就输出错误
     {
         qDebug() << sqlQuery.lastError();
+        return false;
     }
+
+    return true;
 }
 
 // 修改数据
-void SqliteOperator::modifyData(int id, double posx, double posy, float height, float basehgt)
+bool SqliteOperator::modifyData(int id, double posx, double posy, float height, float basehgt)
 {
     QSqlQuery sqlQuery;
     sqlQuery.prepare("UPDATE gpsland SET posx=?,posy=?,height=?,basehgt=? WHERE id=?");
@@ -156,10 +161,12 @@ void SqliteOperator::modifyData(int id, double posx, double posy, float height, 
     if(!sqlQuery.exec())
     {
         qDebug() << sqlQuery.lastError();
+        return false;
     }
     else
     {
         qDebug() << "updated data success!";
+        return true;
     }
 }
 
@@ -201,5 +208,3 @@ void SqliteOperator::closeDb(void)
 {
     m_database.close();
 }
-
-

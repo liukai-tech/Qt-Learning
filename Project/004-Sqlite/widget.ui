@@ -166,7 +166,7 @@
           </font>
          </property>
          <property name="text">
-          <string>删除</string>
+          <string>Delete</string>
          </property>
         </widget>
        </item>
@@ -184,7 +184,7 @@
           </font>
          </property>
          <property name="text">
-          <string>插入</string>
+          <string>Insert</string>
          </property>
         </widget>
        </item>
@@ -202,7 +202,7 @@
           </font>
          </property>
          <property name="text">
-          <string>修改</string>
+          <string>Update</string>
          </property>
         </widget>
        </item>
@@ -220,7 +220,7 @@
           </font>
          </property>
          <property name="text">
-          <string>查询</string>
+          <string>Query</string>
          </property>
         </widget>
        </item>
@@ -238,7 +238,7 @@
           </font>
          </property>
          <property name="text">
-          <string>查询所有的信息</string>
+          <string>Query All</string>
          </property>
         </widget>
        </item>

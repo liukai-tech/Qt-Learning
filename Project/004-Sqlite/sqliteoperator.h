@@ -30,10 +30,10 @@ public:
     // 查询全部数据
     void queryTable();
     // 插入数据
-    void singleInsertData(gpslanddb_t &singleData); // 插入单条数据
-    void moreInsertData(QList<gpslanddb_t> &moreData); // 插入多条数据
+    bool singleInsertData(gpslanddb_t &singleData); // 插入单条数据
+    bool moreInsertData(QList<gpslanddb_t> &moreData); // 插入多条数据
     // 修改数据
-    void modifyData(int id, double posx, double posy, float height, float basehgt);
+    bool modifyData(int id, double posx, double posy, float height, float basehgt);
     // 删除数据
     bool deleteData(int id);
     //删除数据表
