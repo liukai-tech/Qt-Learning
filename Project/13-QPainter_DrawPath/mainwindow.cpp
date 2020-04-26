@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->labelDrawPath->installEventFilter(this);
 
+    m_zoomscale = 1.0;
+
     m_Painter = new QPainter(ui->labelDrawPath);
     m_Painter->begin(ui->labelDrawPath);
     m_Painter->translate(290,200); //将点（290,200）设为原点
@@ -63,6 +65,7 @@ void MainWindow::drawFunction()
 
     m_Painter->translate(290,200); //将点（290,200）设为原点
     m_Painter->setRenderHint(QPainter::Antialiasing, true);//反走样
+    m_Painter->scale(m_zoomscale, m_zoomscale);
 
     for(int i=0; i<m_lines.size()-1; ++i)
     {
@@ -80,23 +83,24 @@ void MainWindow::drawFunction()
     m_Painter->end();
 
 }
+
 void MainWindow::handleUpdateTimeout()
 {
     ui->labelDrawPath->update();
 }
 
-
-
 void MainWindow::on_btnZoomIn_clicked()
 {
-    m_Painter->begin(ui->labelDrawPath);
-    m_Painter->scale(1.1,1.1);
-    m_Painter->end();
+    if(m_zoomscale < 4.0){
+        m_zoomscale += 0.1;
+    }
+    ui->labelDrawPath->update();
 }
 
 void MainWindow::on_btnZoomOut_clicked()
 {
-    m_Painter->begin(ui->labelDrawPath);
-    m_Painter->scale(0.9,0.9);
-    m_Painter->end();
+    if(m_zoomscale > 0.1){
+        m_zoomscale -= 0.1;
+    }
+    ui->labelDrawPath->update();
 }
