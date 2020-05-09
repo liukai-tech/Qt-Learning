@@ -21,6 +21,50 @@ public:
     void drawFunction();
     bool eventFilter(QObject *obj, QEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+    void resize();
+    void resizeEvent(QResizeEvent *event);
+
+private:
+
+    void setCenter(QPoint &p)
+    {
+        m_centerX = p.x();
+        m_centerY = p.y();
+    }
+
+    float getCenterX(void)
+    {
+        return m_centerX;
+    }
+
+    float getCenterY(void)
+    {
+        return m_centerY;
+    }
+
+    void tarnslatePos(QPoint &p1)
+    {
+        float x, y;
+
+        x = p1.x();
+        y = p1.y();
+
+        x += (WINDOW_WIDTH/2 - m_centerX);
+        y += (WINDOW_HEIGHT/2 - m_centerY);
+
+        p1.setX(x);
+        p1.setY(y);
+    }
+
+    int getWidth()
+    {
+        return m_Width;
+    }
+
+    int getHeight()
+    {
+        return m_Height;
+    }
 
 private slots:
     void on_btnZoomIn_clicked();
@@ -54,5 +98,10 @@ private:
     int m_posYmin;
     int m_baseHgt;
     int m_rtHgt;
+
+    float m_centerX;
+    float m_centerY;
+
+    int m_Width,m_Height;
 };
 #endif // MAINWINDOW_H
